@@ -35,7 +35,7 @@ podTemplate(cloud: "kubernetes", containers: [
                         set +x
                         echo '$DOCKER_CONFIG_FILE' > config.json
                         cp config.json /kaniko/.docker/config.json
-                        /kaniko/executor --dockerfile=$WORKSPACE/Dockerfile --context=$WORKSPACE  --destination=bicharness/helloworld:latest --skip-tls-verify
+                        /kaniko/executor --dockerfile=$WORKSPACE/Dockerfile --context=$WORKSPACE  --destination=bicharness/helloworld:$BUILD_NUMBER --skip-tls-verify
                         """                  
                     }
                     catch (exc) {
