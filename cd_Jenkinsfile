@@ -1,0 +1,35 @@
+#!groovy
+
+podTemplate(cloud: "kubernetes", , imagePullSecrets: ['regcred'], containers: [
+    containerTemplate(name: 'jnlp', image: 'jenkinsci/jnlp-slave:alpine', ttyEnabled: true, alwaysPullImage: true),
+    containerTemplate(name: 'helloworld', image: 'bicharness/k8s:tf', ttyEnabled: true, command: '/busybox/cat', alwaysPullImage: true)
+]) {
+    node(POD_LABEL) {
+        //Vault Configuration
+        def configuration = [vaultUrl: 'http://10.97.66.236:8200',
+                            vaultCredentialId: 'vault-token', engineVersion: 1]
+        //Define Required Secrets and Env Variables
+        def secrets = [
+            [path: 'kv/docker', secretValues: [
+                [envVar: 'DOCKER_CONFIG_FILE', vaultKey: 'config']]]
+        ]
+        //Use the Credentials with the Build
+        withVault([configuration: configuration, vaultSecrets: secrets]) {
+            //Package up and ship via Kaniko
+            stage('Hello World') {
+                container('helloworld') {
+                    try {
+                        sh """
+                        set +x
+                        echo 'Done!'
+                        """                  
+                    }
+                    catch (exc) {
+                        println "Kaniko Steps Failed - ${currentBuild.fullDisplayName}"
+                        throw(exc)
+                    }
+                }
+            }
+        }
+    }
+}

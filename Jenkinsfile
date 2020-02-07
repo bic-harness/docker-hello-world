@@ -6,7 +6,7 @@ podTemplate(cloud: "kubernetes", containers: [
 ]) {
     node(POD_LABEL) {
         //Vault Configuration
-        def configuration = [vaultUrl: 'http://10.110.141.74:8200',
+        def configuration = [vaultUrl: 'http://10.97.66.236:8200',
                             vaultCredentialId: 'vault-token', engineVersion: 1]
         //Define Required Secrets and Env Variables
         def secrets = [

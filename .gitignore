@@ -1,0 +1,8 @@
+pkg
+target
+*.class
+.ufo/current
+.ufo/data
+.ufo/log
+.ufo/output
+.DS_Store
