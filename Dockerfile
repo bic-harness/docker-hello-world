@@ -1,7 +1,8 @@
 FROM busybox:latest
 
 ADD index.html /www/index.html
-RUN systemctl start httpd
+RUN service httpd stop && \
+    service httpd start
 EXPOSE 80
 
 #EXPOSE 8000
