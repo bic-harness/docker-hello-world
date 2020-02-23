@@ -1,9 +1,6 @@
-FROM busybox:latest
+FROM httpd:latest
 
-ADD index.html /www/index.html
-RUN service httpd stop && \
-    service httpd start
-EXPOSE 80
+ADD index.html /var/www/index.html
 
 #EXPOSE 8000
 #HEALTHCHECK CMD nc -z localhost 8000
