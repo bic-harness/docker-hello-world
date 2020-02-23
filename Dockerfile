@@ -1,6 +1,6 @@
 FROM httpd:latest
 
-ADD index.html /var/www/index.html
+COPY index.html /var/www/index.html
 
 #EXPOSE 8000
 #HEALTHCHECK CMD nc -z localhost 8000
