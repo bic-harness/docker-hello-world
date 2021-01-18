@@ -9,6 +9,5 @@ steps:
       from_secret: u_docker
     password: 
       from_secret: p_docker
-    repo: bicharness/k8s
-    tags:
-      - latest
+    repo: bicharness/helloworld
+    tags: webinar
