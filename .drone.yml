@@ -1,0 +1,14 @@
+kind: pipeline
+name: default
+
+steps:
+- name: Build & Publish with Kaniko
+  image: banzaicloud/drone-kaniko
+  settings:
+    username:
+      from_secret: u_docker
+    password: 
+      from_secret: p_docker
+    repo: bicharness/k8s
+    tags:
+      - latest

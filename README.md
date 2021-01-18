@@ -1,22 +1,9 @@
+[![Build Status](https://cloud.drone.io/api/badges/bic-harness/docker-hello-world/status.svg?ref=refs/heads/master)](https://cloud.drone.io/bic-harness/docker-hello-world)
+
 Hello World
 ===========
 
-This is a simple Docker image that just gives http responses on port 8000. It's
-small enough to fit on one floppy disk:
-
-```bash
-$ docker images | grep hell
-REPOSITORY               TAG       IMAGE ID        CREATED          VIRTUAL SIZE
-crccheck/hello-world     latest    2b28c6ad8d1b    4 months ago     1.2MB
-```
-
-I made this initially because there were lots of scenarios where I wanted a
-Docker container that speaks HTTP, but every guide used images that took
-seconds to download. Armed with a tiny Docker image, I could test things in a
-fresh environment in under a second. I like faster feedback loops.
-
-**THANK YOU** to the surprisingly large number of contributors that have made
-this better for everyone over the years.
+This is a simple Docker image that just gives http responses on port 8000.
 
 
 Sample Usage
