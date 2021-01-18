@@ -3,11 +3,11 @@ name: default
 
 steps:
 - name: Build & Publish with Kaniko
-  image: banzaicloud/drone-kaniko
+  image: banzaicloud/drone-kaniko:0.5.1
   settings:
+    repo: bicharness/helloworld
+    tags: webinar
     username:
       from_secret: u_docker
     password: 
       from_secret: p_docker
-    repo: bicharness/helloworld
-    tags: webinar
