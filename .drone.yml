@@ -2,6 +2,16 @@ kind: pipeline
 name: default
 
 steps:
+- name: build
+  image: plugins/docker
+  settings:
+    dry_run: true
+    repo: bicharness/helloworld
+  when:
+    event:
+    - pull_request
+    - push
+
 - name: Build & Publish with Kaniko
   image: banzaicloud/drone-kaniko:0.5.1
   settings:
@@ -13,3 +23,6 @@ steps:
       from_secret: u_docker
     password: 
       from_secret: p_docker
+  when:
+    event:
+    - custom
