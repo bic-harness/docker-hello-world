@@ -16,12 +16,10 @@ serviceType: NodePort
 
 # A Service can map an incoming port to any targetPort.
 # targetPort is where application is listening on inside the container.
-prodNameServicePort: http
-prodServicePort: 8000
-prodServiceTargetPort: 8000
-devNameServicePort: http
-devServicePort: 8000
-devServiceTargetPort: 8000
+nameServicePort: http
+servicePort: 8000
+serviceTargetPort: 8000
+serviceNodePort: 30888
 namePromPort: prom
 promServicePort: 8088
 promeTargetPort: 8088
