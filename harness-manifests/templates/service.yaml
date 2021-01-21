@@ -13,14 +13,23 @@ metadata:
 spec:
   type: {{.Values.serviceType}}
   ports:
-  - name: {{.Values.nameServicePort1}}
-    port: {{.Values.servicePort1}}
-    targetPort: {{.Values.serviceTargetPort1}}
+{{- if .Values.prodNameServicePort}}
+  - name: {{.Values.prodNameServicePort}}
+    port: {{.Values.prodServicePort}}
+    targetPort: {{.Values.prodServiceTargetPort}}
     nodePort: 30888
     protocol: TCP
-  - name: {{.Values.nameServicePort2}}
-    port: {{.Values.servicePort2}}
-    targetPort: {{.Values.serviceTargetPort2}}
+{{- end}}
+{{- if .Values.devNameServicePort}}
+  - name: {{.Values.devNameServicePort}}
+    port: {{.Values.devServicePort}}
+    targetPort: {{.Values.devServiceTargetPort}}
+    nodePort: 33888
+    protocol: TCP
+{{- end}}
+  - name: {{.Values.namePromPort}}
+    port: {{.Values.promServicePort}}
+    targetPort: {{.Values.promeTargetPort}}
     protocol: TCP
   selector:
     app: {{.Values.name}}

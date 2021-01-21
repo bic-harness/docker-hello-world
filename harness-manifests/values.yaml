@@ -16,12 +16,15 @@ serviceType: NodePort
 
 # A Service can map an incoming port to any targetPort.
 # targetPort is where application is listening on inside the container.
-nameServicePort1: http
-servicePort1: 8000
-serviceTargetPort1: 8000
-nameServicePort2: prom
-servicePort2: 8088
-serviceTargetPort2: 8088
+prodNameServicePort: http
+prodServicePort: 8000
+prodServiceTargetPort: 8000
+devNameServicePort: http
+devServicePort: 8000
+devServiceTargetPort: 8000
+namePromPort: prom
+promServicePort: 8088
+promeTargetPort: 8088
 
 # Specify all environment variables to be added to the container.
 # The following two maps, config and secrets, are put into a ConfigMap
