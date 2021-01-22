@@ -10,7 +10,6 @@ steps:
   when:
     event:
     - pull_request
-    - push
 
 - name: Build & Publish with Kaniko
   image: banzaicloud/drone-kaniko:0.5.1
