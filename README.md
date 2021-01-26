@@ -4,5 +4,3 @@ Hello World
 ===========
 
 This is a simple Docker image that just gives http responses on port 8000.
-
-Test Commit
